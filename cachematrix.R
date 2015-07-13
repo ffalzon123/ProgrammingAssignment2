@@ -33,10 +33,10 @@ makeCacheMatrix <- function(mtx = matrix()) {
 }
 
 
-## cacheSolve is passed a list parameter that has been create with makeCacheMatrix
+## cacheSolve is passed a list parameter that has been created with makeCacheMatrix
 
 cacheSolve <- function(x, ...) {
-  ## the fuction tries to retrieve the inverse of the matrix from the input list
+  ## the function tries to retrieve the inverse of the matrix from the input list
   i <- x$getInverse()
   
   ## is the inverse is found, it is returned (instead of being recalculated)
@@ -48,7 +48,7 @@ cacheSolve <- function(x, ...) {
   ## if the inverse is not found, the function continues processing.
   
   data <- x$getMatrix() ## the matrix from the input list is passed to the 'data' object
-  i <- solve(data, ...) ## the inverse of data is calcutated using the function 'solve'
+  i <- solve(data, ...) ## the inverse of 'data' is calculated using the function 'solve'
   x$setInverse(i) ## the inverse is saved to the input list
   i ## the inverse is returned
 }
