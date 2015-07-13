@@ -1,7 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+## makeCacheMatrix is passed a matrix and it returns a list containing the following functions:
+##
+##  setMatrix
+##  getMatrix
+##  setInverse
+##  getInverse
+##
+## when this function is initally invoked the input matrix is saved in mtx parameter
 
 makeCacheMatrix <- function(mtx = matrix()) {
   
@@ -28,20 +32,25 @@ makeCacheMatrix <- function(mtx = matrix()) {
        getInverse = getInverse)
 }
 
-r2
-## The function cacheSolve first tries to retrieve
+
+## cacheSolve is passed a list parameter that has been create with makeCacheMatrix
 
 cacheSolve <- function(x, ...) {
-  ## Return a matrix that is the inverse of 'x'
+  ## the fuction tries to retrieve the inverse of the matrix from the input list
   i <- x$getInverse()
+  
+  ## is the inverse is found, it is returned (instead of being recalculated)
   if(!is.null(i)) {
     message("getting cached data")
-    return(i)
+    return(i) ## the function is exited returning the inverse
   }
-  data <- x$getMatrix()
-  i <- solve(data, ...)
-  x$setInverse(i)
-  i
+  
+  ## if the inverse is not found, the function continues processing.
+  
+  data <- x$getMatrix() ## the matrix from the input list is passed to the 'data' object
+  i <- solve(data, ...) ## the inverse of data is calcutated using the function 'solve'
+  x$setInverse(i) ## the inverse is saved to the input list
+  i ## the inverse is returned
 }
 
 
